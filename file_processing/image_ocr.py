@@ -7,7 +7,7 @@ def extract_text_from_image(image_file):
     img_np = np.array(image)
 
     ocr = OCREngine.get()
-    result = ocr.ocr(img_np, cls=True)
+    result = ocr.ocr(img_np)
 
     text_lines = []
     for line in result[0]:
