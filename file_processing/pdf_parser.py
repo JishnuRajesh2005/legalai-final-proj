@@ -9,7 +9,7 @@ def parse_pdf(file):
     all_text = []
     for page in pages:
         img_np = np.array(page)
-        res =  ocr.ocr(img_np, cls=True)
+        res =  ocr.ocr(img_np)
         
         for line in res[0]:
             all_text.append(line[1][0])
