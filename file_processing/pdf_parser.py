@@ -9,12 +9,13 @@ def parse_pdf(file):
     all_text = []
     for page in pages:
         img_np = np.array(page)
-        res =  ocr.ocr(img_np)
+        res = ocr.ocr(img_np)
         
         for line in res[0]:
             all_text.append(line[1][0])
-
-        return{
-           "type": "pdf",
-            "content": "\n".join(all_text)
-        }
+    
+    # FIXED: return moved outside the loop
+    return {
+        "type": "pdf",
+        "content": "\\n".join(all_text)
+    }
