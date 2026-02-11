@@ -3,7 +3,7 @@ from chat.chat_state import ChatState
 from chat.input_router import route_input
 from file_processing.file_loader import handle_file
 
-st.set_page_config(page_title="Legal Advisor Chat", page_icon="⚖️",  layout="wide")
+st.set_page_config(page_title="Legal Advisor Chat", page_icon="⚖️", layout="wide")
 st.title("⚖️ Legal Advisor Chat")
 
 if "chat_state" not in st.session_state:
@@ -14,7 +14,7 @@ if uploaded_files:
     for file in uploaded_files:
         try:
             doc = handle_file(file)
-            st.session.state.chat_state.add_document(doc)
+            st.session_state.chat_state.add_document(doc)  # FIXED: was st.session.state
         except Exception as e:
             st.error(f"Error processing file {file.name}: {e}")
 
